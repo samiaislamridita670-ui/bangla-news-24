@@ -1,4 +1,3 @@
-
 import MainNews from "./components/MainNews";
 import NewsCard from "./components/newsCard";
 import MostRead from "./components/MostRead";
@@ -22,9 +21,11 @@ export default async function Home() {
   );
 
   const data = await rest.json();
-  const sections = data.data;
+
+  // Fixed TypeScript errors
+  const sections: IotherSection[] = data.data;
   const mainNews = sections[0].articles;
-  const otherSection = sections.slice(1);
+  const otherSection: IotherSection[] = sections.slice(1);
 
   return (
     <main className="mx-auto mt-10 w-full max-w-7xl px-4 sm:px-6 lg:px-8">
